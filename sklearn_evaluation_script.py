@@ -56,6 +56,7 @@ if __name__ == '__main__':
 
     search_iterations = 50
 
+    underlined_output('Searching strategy')
     strategy_dictionary = random_search(strategy_dictionary, search_iterations)
 
     underlined_output('Offset validation')

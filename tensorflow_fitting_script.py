@@ -1,7 +1,6 @@
 import numpy as np
 import random
-from trading_strategy_fitting import tic, tensorflow_offset_scan_validation, fit_tensorflow,\
-    underlined_output
+from trading_strategy_fitting import tic, tensorflow_offset_scan_validation, fit_tensorflow, underlined_output
 from strategy_evaluation import output_strategy_results
 
 
@@ -73,6 +72,7 @@ if __name__ == '__main__':
 
     search_iterations = 2
 
+    underlined_output('Searching strategy')
     strategy_dictionary = random_search(strategy_dictionary, search_iterations)
 
     underlined_output('Offset validation')

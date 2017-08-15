@@ -1,6 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
-
 
 def strategy_profit(currency_position, fractional_price, strategy_dictionary):
     buy_sell_length = len(currency_position)
@@ -133,6 +131,8 @@ def output_strategy_results(strategy_dictionary, fitting_dictionary, data_to_pre
         print "\n"
 
     if strategy_dictionary['plot_flag']:
+        matplotlib = importlib.import_module('matplotlib')
+        plt = matplotlib.pyplot
         plt.figure(1)
         close_price = plt.plot(prediction_data)
         portfolio_value = plt.plot(prediction_data[0] * fitting_dictionary['portfolio_value'])

@@ -2,8 +2,7 @@ import numpy as np
 from time import time
 from data_input_processing import Data, train_test_indices, generate_training_variables
 from strategy_evaluation import post_process_training_results, output_strategy_results
-from machine_learning import random_forest_fitting, svm_fitting, adaboost_fitting, gradient_boosting_fitting,\
-    extra_trees_fitting, tensorflow_fitting, tensorflow_sequence_fitting
+from machine_learning import random_forest_fitting, svm_fitting, adaboost_fitting, gradient_boosting_fitting, extra_trees_fitting, tensorflow_fitting, tensorflow_sequence_fitting
 
 SEC_IN_DAY = 86400
 
@@ -124,8 +123,7 @@ def tensorflow_offset_scan_validation(strategy_dictionary, offsets):
 
 
 def import_data(strategy_dictionary):
-    data_to_predict = retrieve_data(
-        strategy_dictionary['ticker_1'], strategy_dictionary, strategy_dictionary['filename1'])
+    data_to_predict = retrieve_data(strategy_dictionary['ticker_1'], strategy_dictionary, strategy_dictionary['filename1'])
     data_2 = retrieve_data(strategy_dictionary['ticker_2'], strategy_dictionary, strategy_dictionary['filename2'])
 
     return data_to_predict, data_2
@@ -154,8 +152,7 @@ def fit_tensorflow(strategy_dictionary):
     train_indices, test_indices = train_test_indices(fitting_inputs, strategy_dictionary['train_test_ratio'])
 
     if strategy_dictionary['sequence_flag']:
-        fitting_dictionary, error = tensorflow_sequence_fitting(
-            '/home/thomas/test',train_indices, test_indices, fitting_inputs, fitting_targets, strategy_dictionary)
+        fitting_dictionary, error = tensorflow_sequence_fitting('/tmp/test',train_indices, test_indices, fitting_inputs, fitting_targets, strategy_dictionary)
 
     else:
         fitting_dictionary, error = tensorflow_fitting(train_indices, test_indices, fitting_inputs, fitting_targets)

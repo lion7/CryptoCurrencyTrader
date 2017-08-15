@@ -35,21 +35,20 @@ In order to estimate the amount of overfitting, a series of offset hyperparamete
 With none of the different automated machine learning optimisation strategies was I able to get a set of fitting parameters which was consistently profitable at multiple offsets.
 * Add none price data.
 
-## Python 2.7 + Tensorflow + MiniConda
-https://conda.io/docs/installation.html    
-https://conda.io/docs/_downloads/conda-cheatsheet.pdf   
-## OSX / linux   
-conda create -n tensorflow-p2 python=2.7   
-source activate tensorflow-p2    
-conda install numpy pandas matplotlib tensorflow jupyter notebook scipy scikit-learn nb_conda     
-conda install -c auto multiprocessing statsmodels arch   
-pip install arch polyaxon   
+## Python 2.7 + Tensorflow + Docker
 
-## Windows
-conda create -n tensorflow-p2 python=2.7   
-activate tensorflow-p2   
-conda install numpy pandas matplotlib tensorflow jupyter notebook scipy scikit-learn nb_conda    
-conda install -c auto multiprocessing statsmodels arch    
-pip install arch polyaxon   
+Make sure that the Docker engine is installed and running.
 
+### CPU
+```bash
+docker build -t gerardje7/cryptocurrencytrader:latest .
+docker run --rm -it -p 8888:8888 gerardje7/cryptocurrencytrader:latest
+```
 
+### GPU
+Make sure that `nvidia-docker` is installed: https://github.com/NVIDIA/nvidia-docker
+
+```bash
+docker build -f Dockerfile.gpu -t gerardje7/cryptocurrencytrader:latest-gpu .
+nvidia-docker run --rm -it -p 8888:8888 gerardje7/cryptocurrencytrader:latest-gpu
+```
